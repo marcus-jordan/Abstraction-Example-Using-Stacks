@@ -1,3 +1,6 @@
+template <class T> 
+class LinkedList;
+
 template <class T>
 class Node {
     public:
@@ -6,8 +9,11 @@ class Node {
         Node(T, Node<T>*, Node<T>*);
         ~Node();
         T value();
+        Node<T>* next();
+        Node<T>* previous();
+    private:
+        T m_value;
         Node<T>* m_next;
         Node<T>* m_previous;
-    protected:
-        T m_value;
+        friend class LinkedList<T>;
 };

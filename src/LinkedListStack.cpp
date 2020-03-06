@@ -1,41 +1,37 @@
+#pragma once 
+
 #include "..\include\LinkedListStack.h"
+#include "LinkedList.cpp"
 
 template <class T>
 LinkedListStack<T>::~LinkedListStack(){
-    while(length) pop();
-    delete stack;
+    delete m_stack;
 }
 template <class T>
 LinkedListStack<T>::LinkedListStack(){
-    length = 0;
-    stack = new LinkedList<T>();
+    m_stack = new LinkedList<T>();
 }
 template <class T>
 bool LinkedListStack<T>::empty(){
-    return (stack->front()) ? false : true;
+    return m_stack->empty();
 }
 template <class T>
 unsigned LinkedListStack<T>::size(){
-    return length; 
+    return m_stack->length();
 }
 template <class T>
 void LinkedListStack<T>::push(T element){
-    stack->insert(element);
-    length++;
+    m_stack->insert(element);
 }
 template <class T>
 void LinkedListStack<T>::pop(){
-    stack->pop();
-    length--;
+    m_stack->pop();
 }
 template <class T>
 T LinkedListStack<T>::peek(){
-    return (stack->front()) ? stack->back()->value() : T();
+    return (!empty()) ? top()->value() : T();
 }
 template <class T>
-void LinkedListStack<T>::printStack(){
-    for(Node<T>* node = stack->front(); node; node = node->m_next){
-        std::cout << node->value() << " ";
-    }
-    std::cout << std::endl;
+Node<T>* LinkedListStack<T>::top(){
+    return m_stack->back();
 }

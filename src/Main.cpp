@@ -1,29 +1,30 @@
-#include <iostream>
-#include "Node.cpp"
 #include "LinkedListStack.cpp"
+#include <iostream>
+#include <string>
 
 int main(){
 
-    LinkedListStack<int> stack = LinkedListStack<int>();
-    stack.push(12);
-    stack.push(24);
-    stack.push(57);
-    std::cout << "size = " << stack.size() << std::endl;
-    stack.printStack();
-    std::cout << stack.peek() << std::endl;
-    stack.pop();
-    std::cout << "size = " << stack.size() << std::endl;
-    stack.printStack();
-    stack.push(24);
-    stack.printStack();
-    std::cout << "size = " << stack.size() << std::endl;
-    stack.pop();
-    stack.printStack();
-    std::cout << stack.peek();
-    stack.pop();
-    stack.printStack();
-    stack.pop();
-    std::cout << stack.peek() << std::endl;
-    
+    LinkedListStack<std::string>* stack = new LinkedListStack<std::string>();
+
+    std::string sentence [] = {"code", "to", "loves", "Jordan", "Marcus"};
+
+    for(auto word : sentence){
+        stack->push(word);
+    }
+
+    std::cout << "The stack has " << stack->size() << " elements that form a sentence." << std::endl;
+    std::cout << stack->top()->value() << " is the first word in the stack." << std::endl;
+
+    std::cout << "SENTENCE: ";
+    while(!stack->empty()){
+        std::cout << stack->peek() << " ";
+        stack->pop();
+    }
+    std::cout << std::endl;
+
+    if(stack->empty()){
+        std::cout << "Sentence printed. The stack is now empty :)" << std::endl;
+    }
+
     return 0;
 }

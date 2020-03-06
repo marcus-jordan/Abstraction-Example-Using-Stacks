@@ -1,2 +1,4 @@
 # stacks
-Stack data structure implementation using pointers
+
+Stack data structure implementation using a Doubly Linked List.
+

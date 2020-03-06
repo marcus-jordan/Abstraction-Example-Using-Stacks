@@ -1,4 +1,7 @@
-#include "..\src\LinkedList.cpp"
+template <class T> 
+class LinkedList;
+template <class T> 
+class Node; 
 
 template <class T>
 class LinkedListStack {
@@ -10,9 +13,8 @@ class LinkedListStack {
         void push(T);
         void pop();
         T peek();
-        void printStack();
-        LinkedList<T>* stack;
+        Node<T>* top();
     private:
-        unsigned length;
+        LinkedList<T>* m_stack;
 };
 
